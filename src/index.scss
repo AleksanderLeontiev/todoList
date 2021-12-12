@@ -1,0 +1,38 @@
+* {
+  box-sizing: content-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#root {
+  //display: flex;
+  //min-height: 100vh;
+}
+
+//#app-content {
+//  background-color: #07040a;
+//}
+
+.app {
+  display: flex;
+  flex-direction: row;
+
+
+  //#app-content {
+  //  width: 100%;
+  //}
+}
+
+//#app-box{
+//  display: flex;
+//  width: 20%;
+//}
+#box-header{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
