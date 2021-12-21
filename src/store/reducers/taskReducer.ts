@@ -25,7 +25,9 @@ let initialState: TaskState = {
     error:null
 };
 export const taskReducer = (state = initialState, action: TaskAction): TaskState => {
+
     switch (action.type) {
+
         case TaskActionTypes.IS_FETCHING_ACTION:
             return { ...state, loading: true, error:null};
         case TaskActionTypes.FETCH_TASKS_SUCCESS:
@@ -36,6 +38,8 @@ export const taskReducer = (state = initialState, action: TaskAction): TaskState
             return {...state, tasks:[...state.tasks, action.payload]};
         case TaskActionTypes.DELETE_TASK:
             return {...state, tasks: state.tasks.filter((t) => t.id !== action.payload)};
+        case TaskActionTypes.UPDATE_TASK:
+            return {...state, ...state.tasks.map(()=>{return {description: action.payload}})};
         default:
             return state
     }

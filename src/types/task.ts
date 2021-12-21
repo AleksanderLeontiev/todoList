@@ -4,7 +4,7 @@ export type Task = {
     // createDateTime: Date;
     // dateTimeExec?: Date;
     description?: string;
-    name: string;
+    // name: string;
     id: string;
     }
 // export type CreatedTask = {
@@ -22,6 +22,12 @@ export enum TaskActionTypes{
     FETCH_TASKS_ERROR = "FETCH_TASKS_ERROR",
     // CHANGE_TASK_NAME = "CHANGE_TASK_NAME",
     TASKS = "TASKS",
+    UPDATE_TASK = "UPDATE_TASK",
+}
+
+interface UpdateTask {
+    type:TaskActionTypes.UPDATE_TASK;
+    payload:Task;
 }
 
 interface DeleteTask {
@@ -55,5 +61,5 @@ interface AddTask {
     type:TaskActionTypes.ADD_TASK;
     payload: Task;
 }
-export type TaskAction = DeleteTask | AddTask | IsFetchingTasksAction
+export type TaskAction = UpdateTask | DeleteTask | AddTask | IsFetchingTasksAction
     | FetchTasksErrorAction | FetchTasksSuccessAction;

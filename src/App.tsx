@@ -12,7 +12,7 @@ import Menu from "./components/Menu";
 import {Task} from "./types/task";
 import TodoList from './components/TodoList';
 import {get} from "http";
-import {createTask, deleteTask} from "./store/actions/userAction";
+import {createTask, deleteTask, updateTask} from "./store/actions/userAction";
 import {useActions} from "./hooks/useActions";
 
 
@@ -24,7 +24,7 @@ function App() {
         {tasks: []},
     ]);
     const {createTask} = useActions();
-
+    const {updateTask} = useActions();
     useEffect(() => {
         // getCollection('lists').then(setLists);
         getCollection('tasks').then(setTask);
@@ -68,7 +68,7 @@ console.log(tasks)
                 {/*</div>*/}
                 {/*}*/}
                 {/*<UserList/>*/}
-                <TaskList remove={deleteTask}/>
+                <TaskList remove={deleteTask} update={updateTask} />
 
         </div>
     )

@@ -18,11 +18,11 @@ const TodoForm: React.FC<ITodoProps> = (props: ITodoProps): any => {
             // dateTimeExec: new Date(),
             id: "",
             description: inputValue,
-            name: inputValue,
+            // name: inputValue,
         };
         props.create(addTask);
         setInputValue("");
-        console.log("asda")
+
     };
 
     return (

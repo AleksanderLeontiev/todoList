@@ -61,7 +61,29 @@ export const deleteTask = (id: string ): ThunkAction<Promise<void>, {}, {}, Task
     }
 };
 
-
+export const updateTask = (task: Task): ThunkAction<Promise<void>, {}, {}, TaskAction> => {
+    return async (dispatch: any): Promise<void> => {
+        return new Promise<void>(async (resolve) => {
+            // dispatch(fetchTasksLoading());
+            console.warn("changes", task);
+            try {
+                  db.collection("tasks").doc(task.id).update(task).then(() => {
+                    dispatch({
+                        type: TaskActionTypes.UPDATE_TASK,
+                        payload: task,
+                    });
+                    // resolve();
+                });
+            } catch (e) {
+                console.error(e)
+                dispatch({
+                    type: TaskActionTypes.FETCH_TASKS_ERROR,
+                    payload: "Что-то пошло не так при загрузке задач",
+                })
+            }
+        });
+    }
+};
 
 export const createTask = (task: Task): ThunkAction<Promise<void>, {}, {}, TaskAction> => {
     return async (dispatch: ThunkDispatch<{}, {}, TaskAction>): Promise<void> => {
